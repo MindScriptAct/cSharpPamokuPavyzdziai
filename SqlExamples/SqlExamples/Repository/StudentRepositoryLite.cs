@@ -130,25 +130,15 @@ namespace SqlExamples.Repository
                                                 SET Name = @name, Score = @score, City = @city 
                                                 WHERE Id=@id;", connection))
             {
-                PprintStatus();
                 connection.Open();
-                PprintStatus();
-
                 cmd.Parameters.Add(new SQLiteParameter("id", item.Id));
                 cmd.Parameters.Add(new SQLiteParameter("name", item.Name));
                 cmd.Parameters.Add(new SQLiteParameter("score", item.Score));
                 cmd.Parameters.Add(new SQLiteParameter("city", item.City));
                 cmd.ExecuteNonQuery();
 
-                PprintStatus();
                 connection.Close();
-                PprintStatus();
             }
-        }
-
-        internal void PprintStatus()
-        {
-            Console.WriteLine(connection.State);
         }
 
         public void Delete(int id)
